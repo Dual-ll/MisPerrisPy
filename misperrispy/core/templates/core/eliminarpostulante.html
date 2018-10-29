@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Eliminar
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+    <head>
+            <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+            <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
+    </head>
+    <body>
+        <h1 class="display-1 text-muted">Eliminar Postulante</h1>
+        <form method="POST">
+            {%csrf_token%}
+            Seleccione Postulante a eliminar:
+            <select class="form-control-sm" name="rut">
+                {%for p in postulantes%}
+                <option>{{p.rut}}</option>
+                {%endfor%}
+            </select>
+            <input class="btn btn-danger" type="submit" value="Eliminar">
+        </form>
+        <br>
+        {%if respuesta%}
+            <h1>Elimino Postulante</h1>
+        {%endif%}
+    </body>
+{% endblock %}

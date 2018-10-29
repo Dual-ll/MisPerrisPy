@@ -1,0 +1,35 @@
+{%extends 'core/base.html'%}
+{%block titulo%}
+    Listado postulantes
+{%endblock%}
+{%block contenedor%}
+    <h1 class="display-1 text-muted">Listado de postulantes</h1>
+    <div class="table-responsive">
+    <table class="table table-bordered table">
+        <thead class="thead-dark">
+            <tr>
+            <th>Rut</th>
+            <th>Nombre Completo</th>
+            <th>Fecha Nacimiento</th>
+            <th>Fono</th>
+            <th>Correo</th>
+            <th>Region</th>
+            <th>Ciudad</th>
+            <th>Tipo Vivienda</th>
+        </tr>
+        </thead>
+        {%for p in postulantes%}
+        <tr>
+            <td>{{p.rut}}</td>
+            <td>{{p.nombreCompleto}}</td>
+            <td>{{p.fechaNac}}</td>
+            <td>{{p.fono}}</td>
+            <td>{{p.correo}}</td>
+            <td>{{p.ciudad}}</td>
+            <td>{{p.region}}</td>
+            <td>{{p.tipoVivienda}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    </div>
+{%endblock%}

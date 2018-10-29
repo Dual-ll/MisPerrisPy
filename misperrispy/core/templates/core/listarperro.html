@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Listar perros
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+    <h1 class="display-1 text-muted">Listado de peliculas</h1>
+    <div class="table-responsive">
+    <table class="table table-bordered table">
+        <thead class="thead-dark">
+            <tr>
+            <th>ID perro</th>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Tamaño</th>
+        </tr>
+        </thead>
+        {%for p in perros%}
+        <tr>
+            <td>{{p.idperro}}</td>
+            <td>{{p.nombre}}</td>
+            <td>{{p.raza}}</td>
+            <td>{{p.edad}}</td>
+            <td>{{p.tamano}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    </div>
+{%endblock%}

@@ -1,0 +1,91 @@
+{%extends 'core/base.html'%}
+{%block titulo%}
+    Ingreso de postulante
+{%endblock%}
+{%block contenedor%}
+    <h1 class="display-1 text-muted">Formulario ingreso de postulante</h1>
+    <div class="table-responsive">
+    <form method="POST">                    
+        {%csrf_token%}
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Rut:</td>
+                <td>
+                    <input class="form-control" type="number" name="rut" id="rut"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre Completo:</td>
+                <td>
+                    <input class="form-control" type="text" name="nombrecompleto" id="nombrecompleto"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha Nacimiento:</td>
+                <td>
+                    <input class="form-control" type="date" name="fechanac" id="fechanac">
+                </td>
+            </tr>
+            <tr>
+                <td>Fono:</td>
+                <td>
+                    <input class="form-control" type="number" name="fono" id="fono"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Correo:</td>
+                <td>
+                    <input class="form-control" type="email" name="correo" id="correo"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Region:</td>
+                <td>
+                    <select class="form-control" name="region">
+                        <option>Seleccione</option>
+                        {% for reg in regiones %}
+                        <option value="{{reg.idregion}}">{{reg.descripcion}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Ciudad:</td>
+                <td>
+                        <select class="form-control" name="ciudad">
+                                <option>Seleccione</option>
+                                {% for ciu in ciudades %}
+                                <option>{{ciu.idciudad}}</option>
+                                {% endfor %}
+                            </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Tipo Vivienda:</td>
+                <td>
+                    <select class="form-control" name="tipovivienda">
+                            <option>Seleccione</option>
+                            {% for tip in tipoviviendas %}
+                            <option>{{tip.idtipo_vivienda}}</option>
+                            {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" class="btn btn-primary" value="Grabar">
+                    <input type="reset" class="btn btn-dark" value="Limpiar">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    {%if respuesta%}
+        <h1>Grabo postulante</h1>
+    {%endif%}
+</div>
+<a href="{% url 'actpo' %}">Actualizar</a>
+<a href="{% url 'lispo' %}">Listar</a>
+<a href="{% url 'elpo' %}">Eliminar</a>
+{%endblock%}

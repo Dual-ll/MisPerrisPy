@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Pagina Inicial Proyecto Cine Romeo
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
+    </head>
+    <body>
+        <br>
+        <br>
+        <section>
+            <div align='center'>
+                    <div id="carouselReubicados" class="carousel slide" data-ride="carousel" id="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselReubicados" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselReubicados" data-slide-to="1"></li>
+                            <li data-target="#carouselReubicados" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Apolo.jpg'%}" alt="Apolo" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Apolo</h5>
+                                    <p>Su nueva familia está muy feliz, y comenta "le encantan los viajes en auto".</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Duque.jpg'%}" alt="Duque" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Duque</h5>
+                                    <p>Sus nuevos padres: "Siempre quisimos un acompañante para nuestros viajes, y con Duque tenemos eso y mas".</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Tom.jpg'%}" alt="Tom" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Tom</h5>
+                                    <p>La familia que lo reubicó: "Es el perfecto acompañante para nuestra hija, no podriamos estar mas felices".</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselReubicados" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselReubicados" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+            </div>
+        </section>
+{% endblock %}

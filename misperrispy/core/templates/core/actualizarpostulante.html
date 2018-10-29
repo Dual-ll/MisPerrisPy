@@ -1,0 +1,107 @@
+{%extends 'core/base.html'%}
+{%block titulo%}
+    Actualizar pelicula
+{%endblock%}
+{%block contenedor%}
+    <h1 class="display-1 text-muted">Formulario de actualizar pelicula</h1>
+    {{mensaje}}
+    <div class="table-responsive">
+    <form method="POST">                    
+        {%csrf_token%}
+        <table class="table table-striped table-bordered" border="1">
+            <tr>
+                <td>Rut:</td>
+                <td>
+                    <select class="form-control-sm" name="rut">
+                        {%for p in postulantes%}
+                            {%if p.rut == po.rut%}
+                                <option selected>{{p.rut}}</option>
+                            {%else%}
+                                <option>{{p.rut}}</option>
+                            {%endif%}
+                        {%endfor%}
+                    </select>
+                    <input class="btn btn-success" name="btnAccion" type="submit" value="Buscar"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre Completo:</td>
+                <td>
+                    <input class="form-control" type="text" name="nombrecompleto" value="{{po.nombreCompleto}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha Nacimiento:</td>
+                <td>
+                    <input class="form-control" type="date" name="fechanac" value="{{po.fechaNac}}" >
+                </td>
+            </tr>
+            <tr>
+                <td>Fono:</td>
+                <td>
+                    <input class="form-control" type="number" name="fono" value="{{po.fono}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Correo:</td>
+                <td>
+                    <input class="form-control" type="text" name="correo" value="{{po.correo}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Region:</td>
+                <td>
+                    <select class="form-control" name="region">
+                            <option>Seleccione</option>
+                            {% for reg in regiones %}
+                                {%if reg.idregion == po.region.idregion%}
+                                    <option selected>{{reg.idregion}}</option>
+                                {%else%}
+                                    <option>{{reg.idregion}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>                    
+                </td>
+            </tr>
+            <tr>
+                <td>Ciudad:</td>
+                <td>
+                    <select class="form-control" name="ciudad">
+                            <option>Seleccione</option>
+                            {% for ciu in ciudades %}
+                                {%if ciu.idciudad == po.ciudad.idciudad%}
+                                    <option selected>{{ciu.idciudad}}</option>
+                                {%else%}
+                                    <option>{{ciu.idciudad}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Tipo Vivienda:</td>
+                <td>
+                    <select class="form-control" name="tipovivienda">
+                            <option>Seleccione</option>
+                            {% for tip in tipoviviendas %}
+                                {%if tip.idtipo_vivienda == po.tipoVivienda.idtipo_vivienda%}
+                                    <option selected>{{tip.idtipo_vivienda}}</option>
+                                {%else%}
+                                    <option>{{tip.idtipo_vivienda}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="btnAccion" class="btn btn-primary" value="Modificar">
+                    <input type="reset" class="btn btn-dark" value="Limpiar">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+</div>
+{%endblock%}
