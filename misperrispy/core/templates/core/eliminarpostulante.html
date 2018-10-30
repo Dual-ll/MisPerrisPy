@@ -10,6 +10,11 @@ Eliminar
     </head>
     <body>
         <h1 class="display-1 text-muted">Eliminar Postulante</h1>
+        {%if respuesta%}
+        <div class="alert alert-success" role="alert">
+            Registro eliminado exitosamente.
+        </div>
+        {%endif%}
         <form method="POST">
             {%csrf_token%}
             Seleccione Postulante a eliminar:

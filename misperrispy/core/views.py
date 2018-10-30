@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .models import Perro, Postulante, Rescatado, Ciudad, Region, TipoVivienda
-
 # Create your views here.
 
 
 def index(request):
     return render(request, 'core/home.html')
+
+def cargar_ciudades(request):
+    idre = request.GET.get('region')
+    ciudades = Ciudad.objects.filter(idregion=idre).order_by('descripcion')
+    return render(request, 'core/formulariopostulante.html', {'ciudades': ciudades})
 
 
 def listarPerro(request):
@@ -15,13 +19,13 @@ def listarPerro(request):
 
 def actualizarPerro(request):
     pe = Perro.objects.all()
-    mensaje = ""
+    mensaje = False
     if request.POST:
         accion = request.POST.get("btnAccion", "")
         if accion == "Buscar":
             idpe = request.POST.get("idperro", "")
             per = Perro.objects.get(idperro=idpe)
-            mensaje = "Encontro"
+            mensaje = False
             return render(request, 'core/actualizarperro.html', {'perros': pe, 'per': per, 'mensaje': mensaje})
         if accion == "Modificar":
             idpe = request.POST.get("idperro", "")
@@ -35,7 +39,7 @@ def actualizarPerro(request):
             per.edad = edad
             per.tamano = tamano
             per.save()
-            mensaje = "Actualizo"
+            mensaje = True
             return render(request, 'core/actualizarperro.html', {'perros': pe, 'mensaje': mensaje})
     return render(request, 'core/actualizarperro.html', {'perros': pe})
 
@@ -81,13 +85,13 @@ def actualizarPostulante(request):
     ciud = Ciudad.objects.all()
     regi = Region.objects.all()
     tipo = TipoVivienda.objects.all()
-    mensaje = ""
+    mensaje = False
     if request.POST:
         accion = request.POST.get("btnAccion", "")
         if accion == "Buscar":
             ru = request.POST.get("rut", "")
             po = Postulante.objects.get(rut=ru)
-            mensaje = "Encontro"
+            mensaje = False
             return render(request, 'core/actualizarpostulante.html', {'postulantes': post, 'po': po, 'ciudades': ciud, 'regiones': regi, 'tipoviviendas': tipo, 'mensaje': mensaje})
         if accion == "Modificar":
             ru = request.POST.get("rut", "")
@@ -101,7 +105,8 @@ def actualizarPostulante(request):
             reg = request.POST.get("region", "")
             obj_region = Region.objects.get(idregion=reg)  # cambiarlo quizas
             tip = request.POST.get("tipovivienda", "")
-            obj_tipovivienda = TipoVivienda.objects.get(idtipo_vivienda=tip)  # tambien
+            obj_tipovivienda = TipoVivienda.objects.get(
+                idtipo_vivienda=tip)  # tambien
             po.nombreCompleto = nom
             po.fechaNac = fec
             po.fono = fon
@@ -110,7 +115,7 @@ def actualizarPostulante(request):
             po.region = obj_region
             po.tipoVivienda = obj_tipovivienda
             po.save()
-            mensaje = "Actualizo"
+            mensaje = True
             return render(request, 'core/actualizarpostulante.html', {'postulantes': post, 'ciudades': ciud, 'regiones': regi, 'tipoviviendas': tipo, 'mensaje': mensaje})
     return render(request, 'core/actualizarpostulante.html', {'postulantes': post, 'ciudades': ciud, 'regiones': regi, 'tipoviviendas': tipo})
 

@@ -4,12 +4,18 @@ Eliminar
 {% endblock %}
 {% block contenedor %}
     {% load static %}
+
     <head>
             <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
             <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
     </head>
     <body>
         <h1 class="display-1 text-muted">Eliminar Perro</h1>
+        {%if respuesta%}
+        <div class="alert alert-success" role="alert">
+            Registro eliminado exitosamente.
+        </div>
+        {%endif%}
         <form method="POST">
             {%csrf_token%}
             Seleccione perro a eliminar:
@@ -21,8 +27,5 @@ Eliminar
             <input class="btn btn-danger" type="submit" value="Eliminar">
         </form>
         <br>
-        {%if respuesta%}
-            <h1>Elimino Perro</h1>
-        {%endif%}
     </body>
 {% endblock %}
