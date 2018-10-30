@@ -66,8 +66,9 @@ class Postulante(models.Model):
 class Rescatado(models.Model):
     idRescatado = models.AutoField(
         max_length=10, primary_key=True, blank=False)
-    fotografia = models.ImageField(blank=False, upload_to="media/")
+    fotografia = models.ImageField(blank=False)
     raza = models.CharField(max_length=100, blank=False)
     descripcion = models.CharField(max_length=100, blank=False)
     estado = models.CharField(max_length=20, blank=False)
     idperro = models.ForeignKey(Perro, on_delete=models.CASCADE)
+

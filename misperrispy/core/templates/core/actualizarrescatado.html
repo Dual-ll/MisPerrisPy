@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Actualizar rescatados
+{% endblock %}
+{% block contenedor %}
+{% load static %}
+<body>
+    {%if mensaje%}
+    <div class="alert alert-success" role="alert">
+        Actualizacion exitosa.
+    </div>
+    {%endif%}
+        <form method="POST">
+        {%csrf_token%}
+        <table class="table table-striped table-bordered" border="1">
+            <tr>
+                <select class="form-control-sm" name="idrescatado" id="idrescatado" required>
+                    {%for r in rescatados%}
+                        {%if r.idRescatado == re.idRescatado%}
+                            <option selected>{{r.idRescatado}}</option>
+                        {%else%}
+                            <option>{{r.idRescatado}}</option>
+                        {%endif%}
+                    {%endfor%}
+                </select>
+                <input class="btn btn-success" name="btnAccion" type="submit" value="Buscar" formnovalidate/>
+            </tr>
+
+            <tr>
+                    <td><font face="Franklin Gothic Medium" size="5" >Raza:</font></td>
+                    <td><input placeholder="Ingrese raza" class="form-control" type="text" name="raza" value="{{re.raza}}" required/></td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td><font face="Franklin Gothic Medium" size="5" >Descripcion:</font></td>
+                        <td><input placeholder="Ingrese una descripcion" class="form-control" type="text" name="descripcion" value="{{re.descripcion}}" required/></td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td><font face="Franklin Gothic Medium" size="5" >Estado:</font></td>
+                    <td>
+                        <select class="form-control" name="estado" required>
+                                <option value="">Seleccione</option>
+                                <option value="Rescatados">Rescatados</option>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Adoptado">Adoptado</option>
+                        </select>
+                    </td>
+                </tr>   
+                <tr>
+                    <td><font face="Franklin Gothic Medium" size="5" >ID Perro:</font></td>
+                    <td>
+                        <select class="form-control" name="perro" id="perro" required>
+                            <option value="" disabled selected>Seleccione</option>
+                            {% for per in perros %}
+                                {% if per.idperro == re.perro.idperro %}
+                                    <option selected>{{per.idperro}}</option>
+                                {%else%}
+                                    <option>{{per.idperro}}</option>
+                                {%endif%}||
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td><font face="Franklin Gothic Medium" size="5" >Fotografia:</font></td>
+                    <td>
+                        <input type="file" name="fotografia" required><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">                <input type="submit" name="btnAccion" class="btn btn-primary" value="Modificar">
+                        <input type="reset" class="btn btn-dark" value="Limpiar"></td>
+                </tr>
+        </table>
+    </form>
+</body>
+</html>
+{%endblock%}

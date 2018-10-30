@@ -6,6 +6,7 @@ from .models import Perro, Postulante, Rescatado, Ciudad, Region, TipoVivienda
 def index(request):
     return render(request, 'core/home.html')
 
+
 def cargar_ciudades(request):
     idre = request.GET.get('region')
     ciudades = Ciudad.objects.filter(idregion=idre).order_by('descripcion')
@@ -101,12 +102,12 @@ def actualizarPostulante(request):
             fon = request.POST.get("fono", "")
             cor = request.POST.get("correo", "")
             ciu = request.POST.get("ciudad", "")
-            obj_ciudad = Ciudad.objects.get(idciudad=ciu)  # cambio quiza
+            obj_ciudad = Ciudad.objects.get(idciudad=ciu)
             reg = request.POST.get("region", "")
-            obj_region = Region.objects.get(idregion=reg)  # cambiarlo quizas
+            obj_region = Region.objects.get(idregion=reg)
             tip = request.POST.get("tipovivienda", "")
             obj_tipovivienda = TipoVivienda.objects.get(
-                idtipo_vivienda=tip)  # tambien
+                idtipo_vivienda=tip)
             po.nombreCompleto = nom
             po.fechaNac = fec
             po.fono = fon
@@ -173,13 +174,14 @@ def listarRescatado(request):
 def actualizarRescatado(request):
     resc = Rescatado.objects.all()
     per = Perro.objects.all()
-    mensaje = ""
+    mensaje = False
     if request.POST:
         accion = request.POST.get("btnAccion", "")
         if accion == "Buscar":
             idre = request.POST.get("idrescatado", "")
             re = Rescatado.objects.get(idRescatado=idre)
-            mensaje = "Encontro"
+            mensaje = False
+            return render(request, 'core/actualizarrescatado.html', {'rescatados': resc, 'perros': per, 're': re, 'mensaje':mensaje})
         if accion == "Modificar":
             idre = request.POST.get("idrescatado", "")
             re = Rescatado.objects.get(idRescatado=idre)
@@ -195,32 +197,32 @@ def actualizarRescatado(request):
             re.estado = es
             re.idperro = obj_perro
             re.save()
-            mensaje = "Actualizo"
+            mensaje = True
             return render(request, 'core/actualizarrescatado.html', {'rescatados': resc, 'perros': pe, 'mensaje': mensaje})
-    return render(request, 'core/actualizarresctado.html', {'rescatados': resc, 'perros': pe})
+    return render(request, 'core/actualizarrescatado.html', {'rescatados': resc, 'perros': per})
 
 
 def eliminarRescatado(request):
     resc = Rescatado.objects.all()
     resp = False
     if request.POST:
-        idr = request.POST.get("idrescatado", "")
+        idr = request.POST.get("idRescatado", "")
         res = Rescatado.objects.get(idRescatado=idr)
         res.delete()
         resp = True
-    return render(request, 'core/eliminarrescatado', {'rescatados': resc, 'respuesta': resp})
+    return render(request, 'core/eliminarrescatado.html', {'rescatados': resc, 'respuesta': resp})
 
 
 def formularioRescatado(request):
     per = Perro.objects.all()
     resp = False
     if request.POST:
-        idr = request.POST.get("idrescatado", "")
+        idr = request.POST.get("idRescatado", "")
         fo = request.POST.get("fotografia", "")
         ra = request.POST.get("raza", "")
         de = request.POST.get("descripcion", "")
         es = request.POST.get("estado", "")
-        pe = request.POST.get("perro", "")
+        pe = request.POST.get("idperro", "")
         obj_perro = Perro.objects.get(idperro=pe)
         resc = Rescatado(
             idRescatado=idr,

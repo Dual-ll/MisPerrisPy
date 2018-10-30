@@ -1,0 +1,30 @@
+{%extends 'core/base.html'%}
+{%block titulo%}
+    Lista de rescatados
+{%endblock%}
+{%block contenedor%}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
+
+</head>
+<body>
+    {%csrf_token%}
+    <br>
+    <div class="mx-auto" style="width: 240px">
+    <table class="table table-bordered table">
+        {% for r in rescatados %}
+            <img src="{{r.fotografia.url}}"><br>
+            <h5>{{r.descripcion}}</h5><br>
+        {% endfor %}
+    </table>
+    </div>
+    
+</body>
+</html>
+{%endblock%}

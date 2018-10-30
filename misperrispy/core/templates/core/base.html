@@ -23,31 +23,34 @@
         {% endblock %}
     </title>
 </head>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{% url 'home' %}"><img src="static/core/img/logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-            <a class="nav-link" href=""> inicio</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'ingps' %}">formulario postulante</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'ingms' %}">formulario mascota</a>
-            </li>
-            <li class="nav-item">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="static/core/img/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"> inicio</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'ingps' %}">formulario postulante</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'ingms' %}">formulario mascota</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'resc' %}">formulario rescatado</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="">contáctanos</a>
-            </li>
-        </ul>
-        </div>
-    </nav>
+        </li>
+    </ul>
+    </div>
+</nav>
 <body>
-    {% block contenedor %}
+{% block contenedor %}
 
-    {% endblock %}
+{% endblock %}
 </body>
 </html>

@@ -12,4 +12,8 @@ urlpatterns = [
     path('eliminarperro', eliminarPerro, name='elpe'),
     path('eliminarpostulante', eliminarPostulante, name='elpo'),
     path('ajax/cargar_ciudades', cargar_ciudades, name='ajax_cargar_ciudades'),
+    path('formulariorescatado', formularioRescatado, name='resc'),
+    path('listarrescatado', listarRescatado, name='lisre'),
+    path('actualizarrescatado', actualizarRescatado, name='acture'),
+    path('eliminarrescatado', eliminarRescatado, name="elire")
 ]
