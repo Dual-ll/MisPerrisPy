@@ -1,0 +1,69 @@
+{% extends 'core/baseadmin.html' %}
+{% block titulo %}
+Actualizar Perro
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+        <link rel="stylesheet" href="static/core/css/style.css">
+<h1 class="display-1 text-muted">Formulario de actualizar perro</h1>
+{%if mensaje%}
+<div class="alert alert-success" role="alert">
+    Actualizacion exitosa.
+</div>
+{%endif%}
+<div class="table-responsive">
+<form method="POST">                    
+    {%csrf_token%}
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>ID perro:</td>
+            <td>
+                <select class="form-control-sm" name="idperro">
+                    {%for p in perros%}
+                        {%if p.idperro == per.idperro%}
+                            <option selected>{{p.idperro}}</option>
+                        {%else%}
+                            <option>{{p.idperro}}</option>
+                        {%endif%}
+                    {%endfor%}
+                </select>
+                <input class="btn btn-success" name="btnAccion" type="submit" value="Buscar" formnovalidate/>
+            </td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>
+                <input minlength="1" maxlength="50" class="form-control" type="text" name="nombre" value="{{per.nombre}}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>Raza:</td>
+            <td>
+                <input minlength="1" maxlength="100" class="form-control" type="text" name="raza" value="{{per.raza}}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>Edad:</td>
+            <td>
+                <input min="0" max="30" class="form-control" type="number" name="edad" value="{{per.edad}}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>Tamaño (cm):</td>
+            <td>
+                <input min="1" max="300" class="form-control" type="number" name="tamano" value="{{per.tamano}}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center>
+                <input type="submit" name="btnAccion" class="btn btn-primary" value="Modificar">
+                <input type="reset" class="btn btn-dark" value="Limpiar">
+                </center>
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+</div>
+{%endblock%}

@@ -1,0 +1,182 @@
+{% extends 'core/baseusuario.html' %}
+{% block titulo %}
+Pagina Inicial Mis Perris
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+        <link rel="stylesheet" href="static/core/css/style.css">
+        <link rel="stylesheet" href="static/core/css/estilonav.css">
+        <link rel="stylesheet" href="static/core/css/lightbox.min.css">
+
+    <body>
+        <br>
+        <br>
+        <section>
+            <div align='center'>
+                    <div id="carouselReubicados" class="carousel slide" data-ride="carousel" id="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselReubicados" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselReubicados" data-slide-to="1"></li>
+                            <li data-target="#carouselReubicados" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Apolo.jpg'%}" alt="Apolo" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Apolo</h5>
+                                    <p>Su nueva familia está muy feliz, y comenta "le encantan los viajes en auto".</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Duque.jpg'%}" alt="Duque" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Duque</h5>
+                                    <p>Sus nuevos padres: "Siempre quisimos un acompañante para nuestros viajes, y con Duque tenemos eso y mas".</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-thumbnail" src="{% static 'core/img/Tom.jpg'%}" alt="Tom" id="imgcarousel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Tom</h5>
+                                    <p>La familia que lo reubicó: "Es el perfecto acompañante para nuestra hija, no podriamos estar mas felices".</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselReubicados" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselReubicados" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+            </div>
+        </section>
+        <div id="contenedort1" >
+                <div id="izquierda" >+56 9 98765431</div>
+                <div id="centro">Rescate y adopción de perros callejeros</div>
+                <div id="derecha">
+                    <img src="static/core/img/icono_redondo_fb-01.png" class="icons">
+                    <img src="static/core/img/google.png" class="icons">
+                    <img src="static/core/img/instagram.png" class="icons">
+                    <img src="static/core/img/icono-redondo-correo-01.png" class="icons">
+                </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <section class="colorfondo2">
+            <br>
+            <br>
+            <br>
+            <center>
+                <div id="contenedor2">
+                    <div class="C">
+                        <h1>RESCATE</h1>
+                        <article>
+                            <p>ETAPA UNO</p>
+                            <br>
+                            <hr class="hr1">
+                            <br>
+                            <samp>Rescatamos a los perros en situación de peligro y/o abandono. Los rehabilitamos y los<br>
+                                preparamos para buscarles un hogar.
+                                <br>
+                                <br>
+                                <br>
+                                <img src="static/core/img/rescate.jpg" class="imagena shadow p-2 mb-5 rounded">
+                            </samp>
+                        </article>
+                    </div>
+                    <div class="D">
+                        <img src="static/core/img/crowfunding.jpg" class="imagenb shadow p-2 mb-5 rounded">
+                        <h1>CROWFUNDING</h1>
+                        <article>
+                            <p>FINANCIAMIENTO</p>
+                            <br>
+                            <hr class="hr2">
+                            <br>
+                            <samp>
+                                Sigue nuestras redes sociales para informarte acerca de las diversas campañas y <br>
+                                actividades que realizamos para obtener financiamiento para seguir ayudando.
+                                <br>
+                                <br>
+                                <button type="button" id="botonC">CAMPAÑAS</button>
+                            </samp>
+                        </article>
+                    </div>
+                </div>
+            </center>
+            <br>
+            <br>
+            <br>
+        </section>
+        <div class="container galeria">
+            <h1 id="titulogaleria">Perros rescatados</h1>
+            <articles class="row" id="subt">
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Bigotes.jpg" data-lightbox="example-set" data-title="Adulto, 12kg, muy juguetón.">
+                        <img src="{% static 'core/img/Bigotes.jpg'%}" alt="Bigotes" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Bigotes</p>
+                </article>
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Chocolate.jpg" data-lightbox="example-set" data-title="Adulto, 18kg, muy amigable y dócil.">
+                        <img src="{% static 'core/img/Chocolate_tn.jpg'%}" alt="Chocolate" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Chocolate</p>
+                </article>
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Luna.jpg" data-lightbox="example-set" data-title="Cachorra, 3kg, inquieta y juguetona.">
+                        <img src="{% static 'core/img/Luna_tn.jpg'%}" alt="Luna" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Luna</p>
+
+                </article>
+                <article class="col-md-3">
+                    <a href="static/core/img/Maya.jpg" data-lightbox="example-set" data-title="Cachorra, 4kg, tranquila y dócil.">
+                        <img src="{% static 'core/img/Maya_tn.jpg'%}" alt="Maya" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Maya</p>
+                </article>
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Oso.jpg" data-lightbox="example-set" data-title="Cachorro, 6kg, juguetón y activo.">
+                        <img src="{% static 'core/img/Oso_tn.jpg'%}" alt="Oso" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Oso</p>
+                </article>
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Pexel.jpg" data-lightbox="example-set" data-title="Cachorro, 3kg, activo y muy sociable.">
+                        <img src="{% static 'core/img/Pexel_tn.jpg'%}" alt="Pexel" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Pexel</p>
+                </article>
+
+                <article class="col-md-3">
+                    <a href="static/core/img/Wifi.jpg" data-lightbox="example-set" data-title="Adulto, 7kg, tranquilo y regalón.">
+                        <img src="{% static 'core/img/Wifi_tn.jpg'%}" alt="Wifi" class="img-thumbnail rounded-circle shadow-lg" id="fotoR"></a>
+                    <p id="subtImg">Wifi</p>
+                </article>
+
+            </articles>
+        </div>
+        <footer>
+            <br>
+            <br>
+            <div id="footP">
+                <div id="footH">Desarrollo Web y Mobile</div> 
+                <div id="footH">2018 copyright &copy; DUOC</div>
+            </div>
+            <br> 
+        </footer>
+        <script src="static/core/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'albumLabel': "Imagen %1 de %2"
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+    </body>
+{% endblock %}

@@ -1,0 +1,19 @@
+{%block titulo%}
+    Nuevo Usuario
+{%endblock%}
+{% block encabezado %}
+    <h1>Registra un nuevo usuario</h1>
+{% endblock %}
+{%block contenedor%}
+    {% load static %}
+    <link rel="stylesheet" href="static/core/css/style.css">
+    <link rel="stylesheet" href="static/core/css/estilonav.css">
+    <link rel="stylesheet" href="static/core/css/lightbox.min.css">
+    <center>
+            <form id='formulario' method='POST' action=''>{% csrf_token %}
+                    <table>{{formulario}}</table>
+                    <p><input type='submit' value='Registrar'/></p>
+            </form>
+    </center>
+    
+{%endblock%}

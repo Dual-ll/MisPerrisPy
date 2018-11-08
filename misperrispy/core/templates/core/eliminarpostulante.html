@@ -1,0 +1,30 @@
+{% extends 'core/baseadmin.html' %}
+{% block titulo %}
+Eliminar Postulantes
+{% endblock %}
+{% block contenedor %}
+{% load static %}
+
+            <link rel="stylesheet" href="static/core/css/style.css">
+            <link rel="stylesheet" href="static/core/css/estilonav.css">
+
+    <body>
+        <h1 class="display-1 text-muted">Eliminar Postulante</h1>
+        {%if respuesta%}
+        <div class="alert alert-success" role="alert">
+            Registro eliminado exitosamente.
+        </div>
+        {%endif%}
+        <form method="POST">
+            {%csrf_token%}
+            Seleccione Postulante a eliminar:
+            <select class="form-control-sm" name="rut">
+                {%for p in postulantes%}
+                <option>{{p.rut}}</option>
+                {%endfor%}
+            </select>
+            <input class="btn btn-danger" type="submit" value="Eliminar">
+        </form>
+        <br>
+    </body>
+{% endblock %}

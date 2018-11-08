@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Bienvenido
+{% endblock %}
+{% block encabezado %}
+    <h1>Bienvenido</h1>
+{% endblock%}
+{% block contenedor %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/lightbox.min.css' %}">
+    <p>Bienvenido {{usuario.username|upper}},
+        la ultima ves que te vimos por aqui fue el {{usuario.last_login}}.</p>
+    <p>Eres miembro desde el {{usuario.date_joined}}</p>
+{% endblock %}

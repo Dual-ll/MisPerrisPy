@@ -1,0 +1,100 @@
+{%extends 'core/baseadmin.html'%}
+{%block titulo%}
+    Ingreso de postulante
+{%endblock%}
+{%block contenedor%}
+{% load static %}
+       
+        <link rel="stylesheet" href="static/core/css/style.css">
+        <link rel="stylesheet" href="static/core/css/estilonav.css">
+
+    <h1 class="display-1 text-muted">Formulario ingreso de postulante</h1>
+    {%if respuesta%}
+    <div class="alert alert-success" role="alert">
+        Guardado exitoso.
+    </div>
+    {%endif%}
+    <div class="table-responsive">
+    <form method="POST">                    
+        {%csrf_token%}
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Rut:</td>
+                <td>
+                    <input minlength="8" maxlength="9" class="form-control" type="tel" name="rut" id="rut" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre Completo:</td>
+                <td>
+                    <input minlength="1" maxlength="50" class="form-control" type="text" name="nombrecompleto" id="nombrecompleto" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha Nacimiento:</td>
+                <td>
+                    <input class="form-control" type="date" name="fechanac" id="fechanac" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Fono:</td>
+                <td>
+                    <input minlength="8" maxlength="9" class="form-control" type="tel" name="fono" id="fono" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Correo:</td>
+                <td>
+                    <input minlength="4" maxlength="50" class="form-control" type="email" name="correo" id="correo" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Region:</td>
+                <td>
+                    <select class="form-control" name="region" id="region" required>
+                        <option value="" disabled selected>Seleccione una region</option>
+                        {% for reg in regiones %}
+                        <option value="{{reg.idregion}}">{{reg.descripcion}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Ciudad:</td>
+                <td>
+                        <select class="form-control" name="ciudad" id="ciudad" required>
+                                <option value="" disabled selected>Seleccione ciudad</option>
+                                {% for ciu in ciudades %}
+                                    <option value="{{ciu.idciudad}}">{{ciu.descripcion}}</option>
+                                {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Tipo Vivienda:</td>
+                <td>
+                    <select class="form-control" name="tipovivienda" required>
+                            <option value="" disabled selected>Seleccione tipo de vivienda</option>
+                            {% for tip in tipoviviendas %}
+                            <option value="{{tip.idtipo_vivienda}}">{{tip.descripcion}}</option>
+                            {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" class="btn btn-primary" value="Grabar">
+                    <input type="reset" class="btn btn-dark" value="Limpiar">
+                </td>
+            </tr>
+        </table>
+    </form>
+    {%if respuesta%}
+        <h1>Grabo postulante</h1>
+    {%endif%}
+</div>
+<a href="{% url 'actpo' %}">Actualizar</a>
+<a href="{% url 'lispo' %}">Listar</a>
+<a href="{% url 'elpo' %}">Eliminar</a>
+{%endblock%}

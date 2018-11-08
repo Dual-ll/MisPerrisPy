@@ -1,0 +1,82 @@
+{% extends 'core/baseadmin.html' %}
+{% block titulo %}
+    Formulario rescatados
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="static/core/css/style.css">
+    <link rel="stylesheet" href="static/core/css/estilonav.css">
+
+<body>  
+        <h1 class="display-1 text-muted">Formulario de rescatados</h1>
+        {% csrf_token %}
+        {%if respuesta%}
+        <div class="alert alert-success" role="alert">
+            Guardado exitoso.
+        </div>
+        {%endif%}
+            <form method="POST" >
+                {%csrf_token%}
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>ID rescate:</td>
+                        <td>
+                            <input min="0" max="99999999" placeholder="Ingrese ID rescatado"  class="form-control" type="integer" name="idRescatado" value="" required style="float: right"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Raza:</td>
+                        <td>
+                            <input minlength="1" maxlength="50" placeholder="Ingrese raza" class="form-control" type="text" name="raza" value="" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion:</td>
+                        <td>
+                            <input  placeholder="Ingrese una descripcion" class="form-control" type="text" name="descripcion" value="" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estado:</td>
+                        <td>
+                            <select class="form-control" name="estado" required>
+                                <option value="" disabled selected>Seleccione</option>
+                                <option value="Rescatados">Rescatados</option>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Adoptado">Adoptado</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nombre Perro:</td>
+                        <td>
+                            <select class="form-control" name="idperro" required>
+                            <option value="" disabled selected>Seleccione</option>
+                                {% for p in perros %}
+                            <option value="{{p.idperro}}">{{p.nombre}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fotografia:</td>
+                        <td>
+                                <input type="file" name="fotografia" required><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                            <input type="submit" class="btn btn-primary" value="Grabar">
+                            <input type="reset" class="btn btn-dark" value="Limpiar" formnovalidate>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+
+            </form>
+            <br>
+</body>
+{% endblock %}

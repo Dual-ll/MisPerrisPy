@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+Ingresa al sistema
+{% endblock %}
+{% block encabezado %}
+    <h1>Ingresa</h1>
+{% endblock %}
+{% block contenedor %}
+    {% load static %}
+    
+    <link rel="stylesheet" href="static/core/css/style.css">
+    <link rel="stylesheet" href="static/core/css/estilonav.css">
+    <link rel="stylesheet" href="static/core/css/lightbox.min.css">
+    <link rel="stylesheet" href="static/core/sign-in.css">
+    <body>
+        <form id="formulario" method="POST" action="">
+            <div class="form-group">
+                    {% csrf_token %}
+                    <table class="table">{{formulario}}</table>
+                    <p><input class="btn btn-primary" type="submit" value="Ingresar" /></p>
+                    No tienes una cuenta? <a href="{% url 'newu' %}">Crear</a>
+                    Olvide mi contraseña <a href="{% url 'password_reset' %}">Recupera Clave</a>
+            </div>
+        </form>
+    </body>
+    
+
+{% endblock %}
