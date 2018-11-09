@@ -4,13 +4,10 @@ Eliminar perros
 {% endblock %}
 {% block contenedor %}
     {% load static %}
-
-
             <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
             <link rel="stylesheet" href="{% static 'core/css/estilonav.css' %}">
-
     <body>
-        <h1 class="display-1 text-muted">Eliminar Perro</h1>
+        <h1 id=titTabla class="display-4">Eliminar perro</h1>
         {%if respuesta%}
         <div class="alert alert-success" role="alert">
             Registro eliminado exitosamente.
@@ -18,13 +15,17 @@ Eliminar perros
         {%endif%}
         <form method="POST">
             {%csrf_token%}
-            Seleccione perro a eliminar:
-            <select class="form-control-sm" name="idperro">
+            <div id=divForm>
+            Seleccione id de perro a eliminar:
+            <select class="custom-select" name="idperro">
                 {%for p in perros%}
                 <option>{{p.idperro}}</option>
                 {%endfor%}
             </select>
-            <input class="btn btn-danger" type="submit" value="Eliminar">
+            <center style="padding: 10px">
+                <input class="btn btn-danger" type="submit" value="Eliminar">
+            </center>
+        </div>
         </form>
         <br>
     </body>

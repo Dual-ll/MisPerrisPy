@@ -9,7 +9,8 @@ Eliminar Postulantes
             <link rel="stylesheet" href="static/core/css/estilonav.css">
 
     <body>
-        <h1 class="display-1 text-muted">Eliminar Postulante</h1>
+
+        <h1 id=titTabla class="display-4">Eliminar postulante</h1>
         {%if respuesta%}
         <div class="alert alert-success" role="alert">
             Registro eliminado exitosamente.
@@ -17,14 +18,18 @@ Eliminar Postulantes
         {%endif%}
         <form method="POST">
             {%csrf_token%}
-            Seleccione Postulante a eliminar:
-            <select class="form-control-sm" name="rut">
-                {%for p in postulantes%}
-                <option>{{p.rut}}</option>
-                {%endfor%}
-            </select>
-            <input class="btn btn-danger" type="submit" value="Eliminar">
-        </form>
-        <br>
-    </body>
-{% endblock %}
+            <div id=divForm>
+                    Seleccione Postulante a eliminar:
+                    <select class="form-control" name="rut">
+                        {%for p in postulantes%}
+                        <option>{{p.rut}}</option>
+                        {%endfor%}
+                    </select>
+                <center style="padding: 10px">
+                    <input class="btn btn-danger" type="submit" value="Eliminar">
+                </center>
+            </div>
+            </form>
+            <br>
+        </body>
+    {% endblock %}

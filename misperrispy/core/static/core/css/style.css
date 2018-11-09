@@ -13,6 +13,11 @@ body{
     overflow: hidden;
 }
 
+
+h1{
+    padding: 10px;
+}
+
 /*Encabezado (NAV) */
 header{
     background-color:rgb(37, 175, 143);
@@ -62,6 +67,20 @@ header a:hover{
 #contenedort1{
     text-align: center;
     padding: 10px;
+}
+
+#divListar{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#divForm{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#titTabla{
+    color: aliceblue;
 }
 
 #izquierda{
